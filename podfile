@@ -1,0 +1,2 @@
+target 'SpotlightLyrics_Demo'
+pod 'SpotlightLyrics'
