@@ -51,8 +51,10 @@ class ViewController: UIViewController {
         
         // Initialize the SpotlightLyrics view
         lyricsView.lyrics = lyrics
-        lyricsView.font = UIFont.systemFont(ofSize: 13)
-        lyricsView.textColor = UIColor.black
+        lyricsView.lyricFont = UIFont.systemFont(ofSize: 13)
+        lyricsView.lyricTextColor = UIColor.lightGray
+        lyricsView.lyricHighlightedFont = UIFont.systemFont(ofSize: 13)
+        lyricsView.lyricHighlightedTextColor = UIColor.black
         
         timeLabel.text = currentTimeString
     }
@@ -76,11 +78,11 @@ class ViewController: UIViewController {
             timer = nil
         }
         
-        currentTime = 100
-        lyricsView.scroll(to: currentTime, animated: true)
+        currentTime = 0
+        lyricsView.scroll(toTime: currentTime, animated: true)
         
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { (_) in
-            self.lyricsView.scroll(to: self.currentTime, animated: true)
+            self.lyricsView.scroll(toTime: self.currentTime, animated: true)
             self.currentTime += 0.5
             if (self.currentTime >= self.totalDuration) {
                 self.stop()

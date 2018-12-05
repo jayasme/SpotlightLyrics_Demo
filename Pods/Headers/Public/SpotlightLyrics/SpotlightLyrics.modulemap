@@ -1,6 +1,0 @@
-module SpotlightLyrics {
-  umbrella header "SpotlightLyrics-umbrella.h"
-
-  export *
-  module * { export * }
-}

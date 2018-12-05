@@ -1,6 +1,0 @@
-module Pods_SpotlightLyrics_Demo {
-  umbrella header "Pods-SpotlightLyrics_Demo-umbrella.h"
-
-  export *
-  module * { export * }
-}
