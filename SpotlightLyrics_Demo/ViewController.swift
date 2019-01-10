@@ -15,16 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var timeLabel: UILabel!
     
-    private var timer: Timer? = nil
-    
-    private var currentTime: TimeInterval = 0
-    
     private let totalDuration: TimeInterval = 332
     
-    private var currentTimeString: String {
-        return String(format: "%.1fs / %.1fs", ceil(currentTime * 10) / 10, totalDuration)
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,8 +47,6 @@ class ViewController: UIViewController {
         lyricsView.lyricTextColor = UIColor.lightGray
         lyricsView.lyricHighlightedFont = UIFont.systemFont(ofSize: 13)
         lyricsView.lyricHighlightedTextColor = UIColor.black
-        
-        timeLabel.text = currentTimeString
     }
     
     
@@ -72,34 +62,13 @@ class ViewController: UIViewController {
     
     private func play() {
         playButton.isSelected = true
-        
-        if (timer != nil) {
-            timer?.invalidate()
-            timer = nil
-        }
-        
-        currentTime = 0
-        lyricsView.scroll(toTime: currentTime, animated: true)
-        
-        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { (_) in
-            self.lyricsView.scroll(toTime: self.currentTime, animated: true)
-            self.currentTime += 0.5
-            if (self.currentTime >= self.totalDuration) {
-                self.stop()
-            }
-            self.timeLabel.text = self.currentTimeString
-        })
+        lyricsView.timer.seek(toTime: 0)
+        lyricsView.timer.play()
     }
     
     private func stop() {
         playButton.isSelected = false
-        self.currentTime = 0
-        timeLabel.text = currentTimeString
-        
-        if (timer != nil) {
-            timer?.invalidate()
-            timer = nil
-        }
+        lyricsView.timer.pause()
     }
     
 
