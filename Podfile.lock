@@ -1,5 +1,5 @@
 PODS:
-  - SpotlightLyrics (0.1.4)
+  - SpotlightLyrics (0.1.5)
 
 DEPENDENCIES:
   - SpotlightLyrics
@@ -9,7 +9,7 @@ SPEC REPOS:
     - SpotlightLyrics
 
 SPEC CHECKSUMS:
-  SpotlightLyrics: 3ddc5547663a1afe8b064cfc2934d471767fa875
+  SpotlightLyrics: dd24e435678db20b476b454447e767f3f88f2b6e
 
 PODFILE CHECKSUM: cb59211c22dd0d148c7f1eabcab49aef7612ffb9
 
